@@ -1,5 +1,6 @@
 
 import readInput from "./read.js";
+
 function j1part1(){
     readInput("j1.txt",(e)=>{
     
@@ -78,7 +79,7 @@ function j1part2(){
                 dial -=100
                 counter++
             }
-            /** intuition : je compte deux fois certains arrets sur zero lorsque dial est en fait egal a 100 
+            /** intuition : je compte deux fois certains arrets sur zero lorsque dial est en fait egal a 100 ex: dial 75 val 25 
              *  else if(dial == 100){
                 dial = 0
             }

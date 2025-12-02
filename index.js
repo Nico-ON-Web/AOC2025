@@ -72,26 +72,32 @@ function j1part2(){
                 dial+= 100
                 counter ++
             }
+            if(dial == 0){
+                console.log("dial vaut zero ici !!")
+                counter++
+            }
+           
 
-        }else if(sens== "R"){
+        }else if(sens == "R"){
             dial = (dial + val)
-            if(dial >99 ){
+            if(dial >99){
                 dial -=100
                 counter++
             }
             /** intuition : je compte deux fois certains arrets sur zero lorsque dial est en fait egal a 100 ex: dial 75 val 25 
-             *  else if(dial == 100){
-                dial = 0
-            }
              */
+            /*else if(dial == 100){
+                dial = 0
+            }*/
+            
            
         }
 
        // le nombre defois ou ca s'arrete pile a zero
      
-        if(dial === 0){
+       /* if(dial === 0){
             counter++
-        }
+        }*/
        // console.log(dial)
     });
 

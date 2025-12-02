@@ -74,13 +74,20 @@ function j1part2(){
 
         }else if(sens== "R"){
             dial = (dial + val)
-            if(dial >99){
+            if(dial >99 ){
                 dial -=100
                 counter++
             }
+            /** intuition : je compte deux fois certains arrets sur zero lorsque dial est en fait egal a 100 
+             *  else if(dial == 100){
+                dial = 0
+            }
+             */
+           
         }
 
        // le nombre defois ou ca s'arrete pile a zero
+     
         if(dial === 0){
             counter++
         }

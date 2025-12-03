@@ -39,73 +39,72 @@ function j1part1(){
 })
 }
 
+function j1part2bis(){
+  readInput("j1.txt", (e) => {
+    const tab = e.trim().split("\n");
+    let dial = 50;
+    let counter = 0;
+
+    tab.forEach(rot => {
+      const sens = rot[0];
+      const val = parseInt(rot.slice(1), 10);
+
+      for (let i = 0; i < val; i++) {
+
+        if (sens === "R") {
+          // avancer à droite
+          dial++;
+          if (dial > 99) {   // wrap-around
+            dial = 0;
+          }
+
+        } else { // L
+          // reculer à gauche
+          dial--;
+          if (dial < 0) {    // wrap-around
+            dial = 99;
+          }
+        }
+
+        // après chaque clic, on teste si le cadran vaut 0
+        if (dial === 0) counter++;
+      }
+    });
+
+    console.log(counter);
+  });
+}
 
 
 function j1part2(){
-   readInput("j1.txt",(e)=>{
-    
-    const tab = e.split("\n")
-    // console.log(tab)
+  readInput("j1.txt", (e) => {
+    const tab = e.trim().split("\n");
+    let dial = 50;
+    let counter = 0;
 
-    // rotations de 0 a 99 (si rot = 100 ) on a fait un tour complet ie 0
-    let dial = 50
-    let counter = 0
     tab.forEach(rot => {
-        let sens = rot[0]
-        let val = parseInt(rot.slice(1))
-        let tourscomplet = 0
+      const sens = rot[0];
+      const val = parseInt(rot.slice(1), 10);
 
-        // le nombre de tours complets
-        if(val>99){
-            tourscomplet = parseInt(val/100)
-            console.log("tours complet : " , tourscomplet )
-            counter+= tourscomplet
-            val= val%100
+      for (let i = 0; i < val; i++) {            
+        if (sens === "R") {
+          dial = (dial + 1) % 100;              
+        } else { 
+            //sens c'est "L"
+          dial = (dial - 1 + 100) % 100;        
         }
-
-        // le nombre de passage par zero avec le reste des tours complet : 
-
-        if(sens == 'L'){
-
-            dial = (dial - val)
-            if(dial <0){
-                dial+= 100
-                counter ++
-            }
-            if(dial == 0){
-                console.log("dial vaut zero ici !!")
-                counter++
-            }
-           
-
-        }else if(sens == "R"){
-            dial = (dial + val)
-            if(dial >99){
-                dial -=100
-                counter++
-            }
-            /** intuition : je compte deux fois certains arrets sur zero lorsque dial est en fait egal a 100 ex: dial 75 val 25 
-             */
-            /*else if(dial == 100){
-                dial = 0
-            }*/
-            
-           
-        }
-
-       // le nombre defois ou ca s'arrete pile a zero
-     
-       /* if(dial === 0){
-            counter++
-        }*/
-       // console.log(dial)
+        if (dial === 0) counter++;             
+      }
     });
 
-    console.log(counter)
-})}
+    console.log(counter);
+  });
+}
 
+j1part2bis()
 
+//j1p1 : 997 
+// j2p2 :  
+//6499 , 5984, 6030 , 6007      nok
 
-
-
-j1part2()
+//5978
